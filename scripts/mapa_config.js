@@ -45,7 +45,7 @@ map.on("load", () => {
 
   map.addSource("homicidios", {
     type: "geojson",
-    data: "https://incandescent-biscochitos-5bb3b9.netlify.app/homicidios.geojson"
+    data: "data/homicidios.geojson"
   });
 
 
@@ -137,7 +137,7 @@ geocoder.on("result", (e) => {
   const codigoEntidad = feature.properties.CVE_ENT;
   console.log("El punto cayó en el estado:", codigoEntidad);
 
-  // 1️⃣ Activar calles
+  // 1️Activar calles
   removerCapaCalles();
   const rutaCalles = `https://incandescent-biscochitos-5bb3b9.netlify.app/calles${codigoEntidad}.geojson`;
   map.addSource("calles", { type: "geojson", data: rutaCalles });
@@ -152,12 +152,12 @@ geocoder.on("result", (e) => {
     minzoom: 9 
   });
 
-  // 2️⃣ Activar parques
+  // 2️Activar parques
   map.setFilter("parques-layer", ["==", "CVE_ENT", codigoEntidad]);
   map.setFilter("homicidios-layer", ["==", "CVE_ENT", codigoEntidad]);
   map.setFilter("escuelas-layer", ["==", "CVE_ENT", codigoEntidad]);
 
-  // 3️⃣ (opcional) activar polígono del estado
+  // (opcional) activar polígono del estado
   removerCapaEstado();
   map.addSource("estado-source", { type: "geojson", data: feature });
   map.addLayer({
