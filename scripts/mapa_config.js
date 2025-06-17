@@ -13,7 +13,7 @@ let bboxNacional = null;
 map.on("load", () => {
 
   // Cargar Entidades.geojson
-  fetch("data/Entidades.geojson")
+  fetch("https://incandescent-biscochitos-5bb3b9.netlify.app/entidades.geojson")
     .then(r => r.json())
     .then(data => {
       estadosGeoJson = data;
@@ -24,7 +24,7 @@ map.on("load", () => {
   // Cargar parques 
   map.addSource("parques", {
     type: "geojson",
-    data: "data/parques.geojson"
+    data: "https://incandescent-biscochitos-5bb3b9.netlify.app/parques.geojson"
   });
 
 
@@ -45,7 +45,7 @@ map.on("load", () => {
 
   map.addSource("homicidios", {
     type: "geojson",
-    data: "data/homicidios.geojson"
+    data: "https://incandescent-biscochitos-5bb3b9.netlify.app/homicidios.geojson"
   });
 
 
@@ -68,7 +68,7 @@ map.on("load", () => {
 // Añadir capa de escuelas
   map.addSource("escuelas", {
     type: "geojson",
-    data: "data/escuelas.geojson"
+    data: "https://incandescent-biscochitos-5bb3b9.netlify.app/escuelas.geojson"
   });
   map.addLayer({
     id: "escuelas-layer",
@@ -139,7 +139,7 @@ geocoder.on("result", (e) => {
 
   // 1️⃣ Activar calles
   removerCapaCalles();
-  const rutaCalles = `data/calles${codigoEntidad}.geojson`;
+  const rutaCalles = `https://incandescent-biscochitos-5bb3b9.netlify.app/calles${codigoEntidad}.geojson`;
   map.addSource("calles", { type: "geojson", data: rutaCalles });
   map.addLayer({
     id: "calles-layer",
