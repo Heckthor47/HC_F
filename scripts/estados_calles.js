@@ -2,7 +2,7 @@ let estadosGeoJson = null;
 let bboxNacional = null;
 
 function cargarEstadosGeoJson() {
-  fetch("data/Entidades.geojson")
+  fetch("https://incandescent-biscochitos-5bb3b9.netlify.app/entidades.geojson")
     .then(response => {
       if (!response.ok) throw new Error("Error al cargar estados.geojson");
       return response.json();
@@ -93,7 +93,7 @@ function manejarCambioEstado() {
   const bboxEstado = turf.bbox(featureSeleccionado);
   map.fitBounds(bboxEstado, { padding: 20, duration: 1000 });
 
-  const rutaCalles = `data/${seleccion}.geojson`;
+  const rutaCalles = `https://incandescent-biscochitos-5bb3b9.netlify.app/${seleccion}.geojson`;
   map.addSource("calles", {
     type: "geojson",
     data: rutaCalles
