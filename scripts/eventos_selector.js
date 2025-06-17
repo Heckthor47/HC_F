@@ -65,7 +65,7 @@ function configurarSelectorEstado() {
     map.setFilter("escuelas-layer", ["==", "CVE_ENT", codigoEntidad]);
 
 
-    const ruta = `https://incandescent-biscochitos-5bb3b9.netlify.app//${seleccion}.geojson`;
+    const ruta = `https://incandescent-biscochitos-5bb3b9.netlify.app/${seleccion}.geojson`;
     map.addSource("calles", { type: "geojson", data: ruta });
     map.addLayer({
       id: "calles-layer",
